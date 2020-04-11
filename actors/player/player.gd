@@ -3,7 +3,10 @@ extends KinematicBody2D
 
 export var stats : Resource
 
-onready var inventory = $inventory
-
 func _ready():
-	pass
+	stats.initialize()
+	randomize()
+
+func _physics_process(delta):
+	if Input.is_action_just_pressed("attack"):
+		stats.xpup(740)

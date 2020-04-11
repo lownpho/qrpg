@@ -1,21 +1,35 @@
 class_name Stats
 extends Resource
 
-export var base := {
-	"max_hp" : 10,
-	"current_hp" : 10,
-	"max_mp" : 5,
-	"current_mp" : 5,
-	
-	"str" : 1,
-	"int" : 1,
-	"dex" : 1,
+export (String) var name
+export (String) var description
+
+var base := {
+	"hp" : 1,
+	"mp" : 1,
 	"vit" : 1,
 	"wis" : 1,
+	"int" : 1,
+	"str" : 1,
+	"dex" : 1,
+	"def" : 1,
+	"spd" : 1,
 	
 	"lv" : 1,
 	"exp" : 0
 }
+
+export var scalings = {
+	"hp" : 1,
+	"mp" : 1,
+	"vit" : 1,
+	"wis" : 1,
+	"int" : 1,
+	"str" : 1,
+	"dex" : 1,
+	"def" : 1,
+	"spd" : 1,
+} #should remove lv and exp but meh
 
 var mods := {}
 
@@ -51,7 +65,12 @@ func get(name:String) -> int:
 func xpup(value:int) -> void:
 	add_base("exp", value)
 	while base["exp"] >= _get_exp_needed_to_lv():
-		add_base("lv", 1)
+		_levelup()
+
+func _levelup() -> void:
+	add_base("lv", 1)
+	for s in scalings:
+		add_base(s, randi() % (scalings[s]+1))
 
 func _get_exp_needed_to_lv() -> int:
 	return int(pow(base["lv"], 3))

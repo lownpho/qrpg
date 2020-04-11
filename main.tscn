@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://items/chest/dropped_item.tscn" type="PackedScene" id=3]
-[ext_resource path="res://items/potions/hp_potion_stats.tres" type="Resource" id=4]
+[ext_resource path="res://actors/player/classes/black.tres" type="Resource" id=3]
+[ext_resource path="res://hud/hud.gd" type="Script" id=4]
+[ext_resource path="res://hud/hud.tscn" type="PackedScene" id=5]
 
 [node name="main" type="Node2D"]
 
@@ -17,23 +18,9 @@ tile_data = PoolIntArray( -655378, 3, 0, -655377, 3, 0, -655376, 3, 0, -655375, 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 219.254, 67.1575 )
 z_index = 1
+stats = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="dropped_item" parent="." instance=ExtResource( 3 )]
-position = Vector2( 118, 99 )
-content = ExtResource( 4 )
-
-[node name="dropped_item2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 148, 139 )
-content = ExtResource( 4 )
-
-[node name="dropped_item3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 209, 149 )
-content = ExtResource( 4 )
-
-[node name="dropped_item4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 255, 148 )
-content = ExtResource( 4 )
+[node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
+script = ExtResource( 4 )

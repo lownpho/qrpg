@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/font.tres" type="DynamicFont" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 71.0
+margin_right = 54.0
+margin_bottom = -69.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_right = 24.0
+custom_constants/separation = 5
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="Label" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 32.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="Label" parent="VBoxContainer"]
+margin_top = 92.0
+margin_right = 32.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vit" type="Label" parent="VBoxContainer"]
+margin_top = 104.0
+margin_right = 32.0
+margin_bottom = 111.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wis" type="Label" parent="VBoxContainer"]
+margin_top = 116.0
+margin_right = 32.0
+margin_bottom = 123.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="int" type="Label" parent="VBoxContainer"]
+margin_top = 128.0
+margin_right = 32.0
+margin_bottom = 135.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="str" type="Label" parent="VBoxContainer"]
+margin_top = 140.0
+margin_right = 32.0
+margin_bottom = 147.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dex" type="Label" parent="VBoxContainer"]
+margin_top = 152.0
+margin_right = 32.0
+margin_bottom = 159.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def" type="Label" parent="VBoxContainer"]
+margin_top = 164.0
+margin_right = 32.0
+margin_bottom = 171.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spd" type="Label" parent="VBoxContainer"]
+margin_top = 176.0
+margin_right = 32.0
+margin_bottom = 183.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lv" type="Label" parent="VBoxContainer"]
+margin_top = 188.0
+margin_right = 32.0
+margin_bottom = 195.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exp" type="Label" parent="VBoxContainer"]
+margin_top = 200.0
+margin_right = 32.0
+margin_bottom = 207.0
+custom_fonts/font = ExtResource( 1 )
+text = "sta: nn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
