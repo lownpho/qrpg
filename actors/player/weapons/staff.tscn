@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://actors/player/weapons/staff.gd" type="Script" id=1]
+[ext_resource path="res://actors/player/weapons/weapon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://actors/player/weapons/lesser_fireball.tscn" type="PackedScene" id=3]
+
+
+[node name="staff" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+bullet_pck = ExtResource( 3 )
+bullet_spd = 300
+
+[node name="cd" parent="." index="0"]
+wait_time = 0.5
