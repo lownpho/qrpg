@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/player/weapons/slash.gd" type="Script" id=1]
+
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 9.99999
+height = 5.0
+
+[node name="slash" type="Area2D"]
+collision_layer = 0
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -10 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Sprite" type="Polygon2D" parent="."]
+visible = false
+polygon = PoolVector2Array( 0, 0, -11, 0, -13, -8, -10, -16, 0, -20, 11, -16, 13, -8, 11, 0 )
