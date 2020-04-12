@@ -9,8 +9,9 @@ var player : KinematicBody2D
 
 
 func _ready() -> void:
-	Events.connect("stat_changed", self, "_stat_changed")
+	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
 	player = owner
+	yield(player, "ready")
 	_speed = base_speed + player.stats.get("spd") * _spd_multiplier
 
 func _physics_process(_delta: float) -> void:
@@ -20,8 +21,7 @@ func _physics_process(_delta: float) -> void:
 	
 	velocity = player.move_and_slide(_speed*dir.normalized())
 
-func _stat_changed(name:String, val:int) -> void:
+func _on_base_stat_changed(name:String, val:int) -> void:
 	if name == "spd":
 		_speed = base_speed + player.stats.get("spd") * _spd_multiplier
-		print(_speed)
 	

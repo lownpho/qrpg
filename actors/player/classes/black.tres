@@ -1,17 +1,15 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://actors/player/classes/stats.gd" type="Script" id=1]
+[ext_resource path="res://actors/player/classes/stats_params.gd" type="Script" id=1]
 
 [resource]
 script = ExtResource( 1 )
-name = "Black Knight"
-description = ""
 scalings = {
 "def": 5,
 "dex": 1,
-"hp": 5,
 "int": 1,
-"mp": 1,
+"max_hp": 5,
+"max_mp": 1,
 "spd": 1,
 "str": 3,
 "vit": 3,
