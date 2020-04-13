@@ -14,6 +14,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("spell"):
 		take_damage(5)
 		consume_mp(3)
+		print(stats.base)
 	
 
 #maybe move it into stats someday
