@@ -39,10 +39,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://actors/player/classes/stats.gd"
 }, {
-"base": "Node2D",
-"class": "Weapon",
+"base": "Area2D",
+"class": "Sword",
 "language": "GDScript",
-"path": "res://actors/player/weapons/weapon.gd"
+"path": "res://actors/player/weapons/sword.gd"
 } ]
 _global_script_class_icons={
 "FSM": "",
@@ -51,7 +51,7 @@ _global_script_class_icons={
 "StatParams": "",
 "State": "",
 "Stats": "",
-"Weapon": ""
+"Sword": ""
 }
 
 [application]

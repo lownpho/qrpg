@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://actors/player/classes/stats_params.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+scalings = {
+"def": 1,
+"dex": 3,
+"int": 1,
+"max_hp": 1,
+"max_mp": 1,
+"spd": 2,
+"str": 5,
+"vit": 5,
+"wis": 1
+}
