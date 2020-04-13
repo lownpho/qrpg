@@ -5,7 +5,7 @@
 [ext_resource path="res://actors/player/classes/stats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/player/classes/black.tres" type="Resource" id=4]
 [ext_resource path="res://actors/player/states/move.gd" type="Script" id=5]
-[ext_resource path="res://actors/player/weapons/sharp_sword.tscn" type="PackedScene" id=6]
+[ext_resource path="res://actors/player/equip_items/weapons/sharp_sword.tscn" type="PackedScene" id=6]
 
 [node name="player" instance=ExtResource( 1 )]
 collision_layer = 2

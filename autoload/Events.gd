@@ -2,6 +2,7 @@ extends Node
 
 signal base_stat_changed(stat_name, new_value)
 signal stat_modded(stat_name, new_value)
+signal stat_demodded(stat_name, new_value)
 
 signal item_added(item_ref)
 

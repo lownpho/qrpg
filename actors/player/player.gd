@@ -3,6 +3,9 @@ extends KinematicBody2D
 
 onready var stats = $stats
 
+
+var armor
+
 func _ready():
 	yield(owner, "ready")
 	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
@@ -14,8 +17,22 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("spell"):
 		take_damage(5)
 		consume_mp(3)
-		print(stats.base)
-	
+	if Input.is_action_just_pressed("hppot"):
+		stats.add_mod("pollo", {"def":12})
+		prints(stats.base, stats.get("def"))
+	if Input.is_action_just_pressed("mppot"):
+		stats.remove_mod("pollo")
+		prints(stats.base, stats.get("def"))
+
+#func armor() -> void:
+#	var armor_pck = load("res://actors/player/equip_items/armors/armor.tscn")
+#	if find_node("armor") == null:
+#		var armor = armor_pck.instance()
+#		add_child(armor)
+#	else:
+#		armor.queue_free()
+#	print(stats.base, stats.get("def"))
+
 
 #maybe move it into stats someday
 func take_damage(dmg:int) -> void:

@@ -51,7 +51,7 @@ func remove_mod(mod_name:String) -> void:
 		updates.push_back(n)
 	mods.erase(mod_name)
 	for n in updates:
-		Events.emit_signal("base_stat_changed",n , get(n))
+		Events.emit_signal("stat_demodded",n , get(n))
 
 func get(name:String) -> int:
 	var tot = base[name]
