@@ -8,31 +8,20 @@ var armor
 
 func _ready():
 	yield(owner, "ready")
+	stats.xpup(3000)
 	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
 	randomize()
 
 func _physics_process(delta):
+	#debug
 	if Input.is_action_just_pressed("attack"):
-		stats.xpup(740)
+		pass
 	if Input.is_action_just_pressed("spell"):
-		take_damage(5)
-		consume_mp(3)
+		pass
 	if Input.is_action_just_pressed("hppot"):
-		stats.add_mod("pollo", {"def":12})
-		prints(stats.base, stats.get("def"))
+		pass
 	if Input.is_action_just_pressed("mppot"):
-		stats.remove_mod("pollo")
-		prints(stats.base, stats.get("def"))
-
-#func armor() -> void:
-#	var armor_pck = load("res://actors/player/equip_items/armors/armor.tscn")
-#	if find_node("armor") == null:
-#		var armor = armor_pck.instance()
-#		add_child(armor)
-#	else:
-#		armor.queue_free()
-#	print(stats.base, stats.get("def"))
-
+		pass
 
 #maybe move it into stats someday
 func take_damage(dmg:int) -> void:

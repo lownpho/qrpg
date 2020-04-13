@@ -10,6 +10,8 @@ var player : KinematicBody2D
 
 func _ready() -> void:
 	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
+	Events.connect("stat_modded", self, "_on_base_stat_changed")
+	Events.connect("stat_demodded", self, "_on_base_stat_changed")
 	player = owner
 	yield(player, "ready")
 	_speed = base_speed + player.stats.get("spd") * _spd_multiplier
