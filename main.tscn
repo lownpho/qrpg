@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://actors/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://actors/player/weapons/sword.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/player/classes/red.tres" type="Resource" id=4]
 [ext_resource path="res://hud/hud.tscn" type="PackedScene" id=5]
 
@@ -22,9 +21,14 @@ z_index = 1
 [node name="stats" parent="player" index="2"]
 scalings_res = ExtResource( 4 )
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="sharp_sword" parent="player" index="5"]
+scalings = {
+"dex": 0,
+"int": 1,
+"str": 0
+}
 
-[node name="Area2D" parent="player" instance=ExtResource( 3 )]
+[node name="Camera2D" type="Camera2D" parent="player"]
 
 [node name="hud" parent="." instance=ExtResource( 5 )]
 

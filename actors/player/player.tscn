@@ -5,21 +5,19 @@
 [ext_resource path="res://actors/player/classes/stats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/player/classes/black.tres" type="Resource" id=4]
 [ext_resource path="res://actors/player/states/move.gd" type="Script" id=5]
-[ext_resource path="res://actors/player/weapons/sword.tscn" type="PackedScene" id=6]
+[ext_resource path="res://actors/player/weapons/sharp_sword.tscn" type="PackedScene" id=6]
 
 [node name="player" instance=ExtResource( 1 )]
 collision_layer = 2
 script = ExtResource( 2 )
 
-[node name="sword" parent="." index="2" instance=ExtResource( 6 )]
-
-[node name="stats" parent="." index="3" instance=ExtResource( 3 )]
+[node name="stats" parent="." index="2" instance=ExtResource( 3 )]
 scalings_res = ExtResource( 4 )
 
-[node name="move" type="Node" parent="." index="4"]
+[node name="move" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="5"]
+[node name="Camera2D" type="Camera2D" parent="." index="4"]
 current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -30,3 +28,10 @@ drag_margin_right = 0.3
 drag_margin_bottom = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="sharp_sword" parent="." index="5" instance=ExtResource( 6 )]
+scalings = {
+"dex": 0,
+"int": 1,
+"str": 0
+}
