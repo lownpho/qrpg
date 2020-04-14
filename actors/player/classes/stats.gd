@@ -76,7 +76,7 @@ func _get_exp_needed_to_lv() -> int:
 
 func _on_heal_timeout() -> void:
 	if base["curr_hp"] < base["max_hp"]:
-		add_base("curr_hp", int(clamp(round(base["vit"]/5), 0, base["max_hp"]-base["curr_hp"])))
+		add_base("curr_hp", int(clamp(round(base["vit"]/10.0), 1, base["max_hp"]-base["curr_hp"])))
 	
 	if base["curr_mp"] < base["max_mp"]:
-		add_base("curr_mp", int(clamp(round(base["wis"]/5), 0, base["max_mp"]-base["curr_mp"])))
+		add_base("curr_mp", int(clamp(round(base["wis"]/10.0), 1, base["max_mp"]-base["curr_mp"])))

@@ -1,25 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://actors/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/player/player.gd" type="Script" id=2]
 [ext_resource path="res://actors/player/classes/stats.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/player/classes/black.tres" type="Resource" id=4]
 [ext_resource path="res://actors/player/states/move.gd" type="Script" id=5]
-[ext_resource path="res://actors/player/equip_items/weapons/sharp_sword.tscn" type="PackedScene" id=6]
-[ext_resource path="res://actors/player/equip_items/spells/bullet_spell.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/player/inventory.tscn" type="PackedScene" id=6]
 
 [node name="player" instance=ExtResource( 1 )]
 collision_layer = 2
 script = ExtResource( 2 )
 
-[node name="bullet_spell" parent="." index="0" instance=ExtResource( 7 )]
-scalings = {
-"def": 0,
-"dex": 0,
-"int": 2,
-"spd": 0,
-"str": 0
-}
+[node name="inventory" parent="." index="0" instance=ExtResource( 6 )]
 
 [node name="stats" parent="." index="3" instance=ExtResource( 3 )]
 scalings_res = ExtResource( 4 )
@@ -38,10 +30,3 @@ drag_margin_right = 0.3
 drag_margin_bottom = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="sharp_sword" parent="." index="6" instance=ExtResource( 6 )]
-scalings = {
-"dex": 0,
-"int": 1,
-"str": 0
-}
