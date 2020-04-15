@@ -4,12 +4,13 @@ extends KinematicBody2D
 onready var stats = $stats
 
 
-var armor
-
 func _ready():
 	randomize()
 	yield(owner, "ready")
-	stats.xpup(3000)
+	$inventory.activate("weapon", "test_sword")
+	$inventory.activate("spell", "status_spell")
+	$inventory.stock("test_bullet_spell")
+	$inventory.stock("test_armor")
 	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
 
 func _physics_process(delta):
@@ -21,7 +22,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("hppot"):
 		pass
 	if Input.is_action_just_pressed("mppot"):
-		pass
+		
+		stats.xpup(30)
 
 #maybe move it into stats someday
 func take_damage(dmg:int) -> void:

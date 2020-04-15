@@ -15,7 +15,8 @@ var base := {
 	"spd" : 1,
 	
 	"lv" : 1,
-	"exp" : 0
+	"curr_exp" : 0,
+	"next_exp" : 0
 }
 
 #shit
@@ -34,6 +35,10 @@ func initialize() -> void:
 
 func add_base(name:String, value:int) -> void:
 	base[name] += value
+	Events.emit_signal("base_stat_changed", name, get(name))
+
+func set_base(name:String, value:int) -> void:
+	base[name] = value
 	Events.emit_signal("base_stat_changed", name, get(name))
 
 func get_base(name:String) -> int:
@@ -62,12 +67,13 @@ func get(name:String) -> int:
 
 #xp stuff
 func xpup(value:int) -> void:
-	add_base("exp", value)
-	while base["exp"] >= _get_exp_needed_to_lv():
+	add_base("curr_exp", value)
+	while base["curr_exp"] >= _get_exp_needed_to_lv():
 		_levelup()
 
 func _levelup() -> void:
 	add_base("lv", 1)
+	set_base("next_exp", _get_exp_needed_to_lv())
 	for s in scalings:
 		add_base(s, randi() % (scalings[s]+1))
 

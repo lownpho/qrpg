@@ -68,9 +68,9 @@ func stock(item_name) -> void:
 	var target_slot := find_empty_stock_slot()
 	if target_slot != "":
 		stock[target_slot] = item_name
-		Events.emit_signal("item_stocked")
+		Events.emit_signal("item_stocked", target_slot, stock[target_slot])
 
-func destock_by_slot(stock_slot) -> void:
+func destock(stock_slot) -> void:
 	if stock[stock_slot] != "":
 		Events.emit_signal("item_destocked", stock_slot, stock[stock_slot])
 		stock[stock_slot] = ""
@@ -85,4 +85,4 @@ func stock_to_active(stock_slot, active_slot):
 	if active.has(active_slot):
 		active_to_stock(active_slot)
 	activate(active_slot, stock[stock_slot])
-	destock_by_slot(stock_slot)
+	destock(stock_slot)

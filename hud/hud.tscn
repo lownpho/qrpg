@@ -1,137 +1,344 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://hud/hud.gd" type="Script" id=1]
 [ext_resource path="res://hud/theme.tres" type="Theme" id=2]
+[ext_resource path="res://hud/bars.gd" type="Script" id=3]
+[ext_resource path="res://hud/hud_inventory.gd" type="Script" id=4]
+[ext_resource path="res://hud/hud_stats.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.027451, 0.0352941, 0.290196, 0.329412 )
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 1 )
 
 [node name="Panel" type="Panel" parent="."]
-anchor_bottom = 1.0
-margin_left = 8.0
-margin_top = 42.0
-margin_right = 72.0
-margin_bottom = -40.0
+anchor_right = 1.0
+margin_bottom = 67.0
 theme = ExtResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_bottom = 1.0
-margin_left = 26.0
-margin_right = 58.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel"]
+anchor_left = 0.01
+anchor_top = 0.02
+anchor_right = 0.99
+anchor_bottom = 0.98
 theme = ExtResource( 2 )
-custom_constants/separation = 0
+custom_constants/separation = 32
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="hp_bar" type="ProgressBar" parent="VBoxContainer"]
-margin_top = 80.0
-margin_right = 32.0
-margin_bottom = 90.0
+[node name="bars" type="VBoxContainer" parent="Panel/VBoxContainer"]
+margin_right = 128.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 128, 8 )
+size_flags_horizontal = 2
+theme = ExtResource( 2 )
+custom_constants/separation = 3
+alignment = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="HBoxContainer" parent="Panel/VBoxContainer/bars"]
+margin_top = 11.0
+margin_right = 128.0
+margin_bottom = 23.0
+
+[node name="hp_text" type="Label" parent="Panel/VBoxContainer/bars/hp"]
+margin_right = 16.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 16, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "HP"
+align = 1
+valign = 1
+max_lines_visible = 0
+
+[node name="hp_bar" type="ProgressBar" parent="Panel/VBoxContainer/bars/hp"]
+margin_left = 20.0
+margin_right = 128.0
+margin_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 theme = ExtResource( 2 )
-step = 1.0
 
-[node name="mp_bar" type="ProgressBar" parent="VBoxContainer"]
-margin_top = 90.0
-margin_right = 32.0
-margin_bottom = 100.0
+[node name="mp" type="HBoxContainer" parent="Panel/VBoxContainer/bars"]
+margin_top = 26.0
+margin_right = 128.0
+margin_bottom = 38.0
+
+[node name="mp_text" type="Label" parent="Panel/VBoxContainer/bars/mp"]
+margin_right = 16.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 16, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
 theme = ExtResource( 2 )
-step = 1.0
+text = "MP"
+align = 1
+valign = 1
+max_lines_visible = 0
 
-[node name="vit" type="Label" parent="VBoxContainer"]
-margin_top = 100.0
+[node name="mp_bar" type="ProgressBar" parent="Panel/VBoxContainer/bars/mp"]
+margin_left = 20.0
+margin_right = 128.0
+margin_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource( 2 )
+
+[node name="lv" type="HBoxContainer" parent="Panel/VBoxContainer/bars"]
+margin_top = 41.0
+margin_right = 128.0
+margin_bottom = 53.0
+
+[node name="lv_text" type="Label" parent="Panel/VBoxContainer/bars/lv"]
+margin_right = 24.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 16, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "LV : 5"
+align = 1
+valign = 1
+max_lines_visible = 0
+
+[node name="curr_exp" type="Label" parent="Panel/VBoxContainer/bars/lv"]
+margin_left = 28.0
+margin_right = 54.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 16, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "Exp: 5"
+align = 1
+valign = 1
+max_lines_visible = 0
+
+[node name="next_exp" type="Label" parent="Panel/VBoxContainer/bars/lv"]
+margin_left = 58.0
+margin_right = 74.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 16, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "/10"
+align = 1
+valign = 1
+max_lines_visible = 0
+
+[node name="stats" type="GridContainer" parent="Panel/VBoxContainer"]
+margin_left = 215.0
+margin_right = 283.0
+margin_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 9
+theme = ExtResource( 2 )
+columns = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vit" type="Label" parent="Panel/VBoxContainer/stats"]
 margin_right = 32.0
-margin_bottom = 112.0
+margin_bottom = 12.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="wis" type="Label" parent="VBoxContainer"]
-margin_top = 112.0
-margin_right = 32.0
-margin_bottom = 124.0
+[node name="wis" type="Label" parent="Panel/VBoxContainer/stats"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 12.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="int" type="Label" parent="VBoxContainer"]
-margin_top = 124.0
+[node name="int" type="Label" parent="Panel/VBoxContainer/stats"]
+margin_top = 16.0
 margin_right = 32.0
-margin_bottom = 136.0
+margin_bottom = 28.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="str" type="Label" parent="VBoxContainer"]
-margin_top = 136.0
-margin_right = 32.0
-margin_bottom = 148.0
+[node name="str" type="Label" parent="Panel/VBoxContainer/stats"]
+margin_left = 36.0
+margin_top = 16.0
+margin_right = 68.0
+margin_bottom = 28.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="dex" type="Label" parent="VBoxContainer"]
-margin_top = 148.0
+[node name="dex" type="Label" parent="Panel/VBoxContainer/stats"]
+margin_top = 32.0
 margin_right = 32.0
-margin_bottom = 160.0
+margin_bottom = 44.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="def" type="Label" parent="VBoxContainer"]
-margin_top = 160.0
-margin_right = 32.0
-margin_bottom = 172.0
+[node name="def" type="Label" parent="Panel/VBoxContainer/stats"]
+margin_left = 36.0
+margin_top = 32.0
+margin_right = 68.0
+margin_bottom = 44.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="spd" type="Label" parent="VBoxContainer"]
-margin_top = 172.0
+[node name="spd" type="Label" parent="Panel/VBoxContainer/stats"]
+margin_top = 48.0
 margin_right = 32.0
-margin_bottom = 184.0
+margin_bottom = 60.0
 theme = ExtResource( 2 )
 text = "sta: nn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lv" type="Label" parent="VBoxContainer"]
-margin_top = 184.0
-margin_right = 32.0
-margin_bottom = 196.0
+[node name="inventory" type="VBoxContainer" parent="Panel/VBoxContainer"]
+margin_left = 367.0
+margin_right = 487.0
+margin_bottom = 64.0
+size_flags_horizontal = 6
+size_flags_vertical = 9
 theme = ExtResource( 2 )
-text = "sta: nn"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 4 )
 
-[node name="exp" type="Label" parent="VBoxContainer"]
-margin_top = 196.0
-margin_right = 32.0
-margin_bottom = 208.0
+[node name="Label4" type="Label" parent="Panel/VBoxContainer/inventory"]
+margin_right = 120.0
+margin_bottom = 12.0
 theme = ExtResource( 2 )
-text = "sta: nn"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "active items:"
+
+[node name="active" type="HBoxContainer" parent="Panel/VBoxContainer/inventory"]
+margin_top = 12.0
+margin_right = 89.0
+margin_bottom = 24.0
+size_flags_horizontal = 2
+theme = ExtResource( 2 )
+
+[node name="weapon" type="Label" parent="Panel/VBoxContainer/inventory/active"]
+margin_right = 27.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="spell" type="Label" parent="Panel/VBoxContainer/inventory/active"]
+margin_left = 31.0
+margin_right = 58.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="armor" type="Label" parent="Panel/VBoxContainer/inventory/active"]
+margin_left = 62.0
+margin_right = 89.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "EMPTY"
+
+[node name="Label5" type="Label" parent="Panel/VBoxContainer/inventory"]
+margin_top = 24.0
+margin_right = 120.0
+margin_bottom = 36.0
+theme = ExtResource( 2 )
+text = "Items in backpack:"
+
+[node name="stock" type="GridContainer" parent="Panel/VBoxContainer/inventory"]
+margin_top = 36.0
+margin_right = 120.0
+margin_bottom = 64.0
+theme = ExtResource( 2 )
+columns = 4
+
+[node name="slot0" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_right = 27.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot1" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_left = 31.0
+margin_right = 58.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot2" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_left = 62.0
+margin_right = 89.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot3" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_left = 93.0
+margin_right = 120.0
+margin_bottom = 12.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot4" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_top = 16.0
+margin_right = 27.0
+margin_bottom = 28.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot5" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_left = 31.0
+margin_top = 16.0
+margin_right = 58.0
+margin_bottom = 28.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot6" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_left = 62.0
+margin_top = 16.0
+margin_right = 89.0
+margin_bottom = 28.0
+theme = ExtResource( 2 )
+text = "empty"
+
+[node name="slot7" type="Label" parent="Panel/VBoxContainer/inventory/stock"]
+margin_left = 93.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 28.0
+theme = ExtResource( 2 )
+text = "empty"

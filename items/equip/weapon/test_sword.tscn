@@ -3,8 +3,7 @@
 [ext_resource path="res://items/equip/weapon/swordshape_medium.tres" type="Shape2D" id=1]
 [ext_resource path="res://items/equip/weapon/test_sword.gd" type="Script" id=2]
 
-
-[node name="sword" type="Area2D"]
+[node name="test_sword" type="Area2D"]
 monitoring = false
 monitorable = false
 collision_layer = 0
