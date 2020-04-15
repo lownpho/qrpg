@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Sword",
 "language": "GDScript",
-"path": "res://actors/player/equip_items/weapons/sword.gd"
+"path": "res://items/equip/weapon/test_sword.gd"
 } ]
 _global_script_class_icons={
 "FSM": "",

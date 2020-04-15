@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://items/equip/spell/test_bullet_spell.gd" type="Script" id=1]
+[ext_resource path="res://items/equip/bullets/test_bullet.tscn" type="PackedScene" id=2]
+
+
+[node name="bullet_spell" type="Node"]
+script = ExtResource( 1 )
+cost = 3
+bullet_scn = ExtResource( 2 )
+scalings = {
+"def": 0,
+"dex": 0,
+"int": 2,
+"spd": 0,
+"str": 0
+}
+damage = 5
+speed = 300
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+[connection signal="tree_exiting" from="." to="." method="_on_bullet_spell_tree_exiting"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

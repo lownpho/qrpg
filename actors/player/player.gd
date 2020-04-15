@@ -9,11 +9,7 @@ var armor
 func _ready():
 	randomize()
 	yield(owner, "ready")
-	$inventory.add_active("sword", "sharp_sword")
-	$inventory.add_active("spell", "bullet_spell")
-	$inventory.add_active("armor", "test_armor")
 	stats.xpup(3000)
-	prints(stats.mods, stats.base)
 	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
 
 func _physics_process(delta):

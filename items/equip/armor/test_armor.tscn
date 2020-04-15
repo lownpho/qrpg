@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://items/equip/armor/test_armor.gd" type="Script" id=1]
+
+[node name="test_armor" type="Node"]
+script = ExtResource( 1 )
+def_scaling = {
+"def": 0,
+"dex": 0,
+"int": 0,
+"spd": 0,
+"str": 1
+}
+[connection signal="tree_exiting" from="." to="." method="_on_armor_tree_exiting"]

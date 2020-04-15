@@ -4,3 +4,6 @@
 
 [node name="inventory" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
