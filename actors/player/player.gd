@@ -3,14 +3,16 @@ extends KinematicBody2D
 
 onready var stats = $stats
 
+onready var agent := GSAISteeringAgent.new()
 
 func _ready():
 	randomize()
 	yield(owner, "ready")
 	$inventory.activate("weapon", "test_sword")
-	$inventory.activate("spell", "status_spell")
-	$inventory.stock("test_bullet_spell")
+	$inventory.activate("spell", "test_bullet_spell")
+	$inventory.stock("status_spell")
 	$inventory.stock("test_armor")
+	stats.xpup(1000)
 	Events.connect("base_stat_changed", self, "_on_base_stat_changed")
 
 func _physics_process(delta):
@@ -23,7 +25,7 @@ func _physics_process(delta):
 		pass
 	if Input.is_action_just_pressed("mppot"):
 		
-		stats.xpup(30)
+		stats.xpup(300)
 
 #maybe move it into stats someday
 func take_damage(dmg:int) -> void:

@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://actors/enemies/test_enemy/test_enemy.png" type="Texture" id=1]
+[ext_resource path="res://actors/enemies/test_enemy/idle.gd" type="Script" id=2]
+[ext_resource path="res://lib/fsm.gd" type="Script" id=3]
+[ext_resource path="res://actors/enemies/test_enemy/test_enemy.gd" type="Script" id=4]
+[ext_resource path="res://actors/enemies/player_detect.tscn" type="PackedScene" id=5]
+[ext_resource path="res://hud/dmg_label.tscn" type="PackedScene" id=6]
+[ext_resource path="res://actors/enemies/attack_area.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/enemies/test_enemy/pursue.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 7 )
+
+[node name="test_enemy" type="KinematicBody2D" groups=[
+"test_enemy",
+]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = 1
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="fsm" type="Node" parent="." groups=[
+"fsm",
+]]
+script = ExtResource( 3 )
+initial_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="fsm"]
+script = ExtResource( 2 )
+
+[node name="dir_change" type="Timer" parent="fsm/idle"]
+wait_time = 3.0
+autostart = true
+
+[node name="pursue" type="Node" parent="fsm"]
+script = ExtResource( 8 )
+
+[node name="attack_area" parent="." instance=ExtResource( 7 )]
+
+[node name="player_detect" parent="." instance=ExtResource( 5 )]
+visible = false
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+script = null
+
+[node name="dmg_label" parent="." instance=ExtResource( 6 )]
+margin_left = -8.0
+margin_top = -19.0
+margin_right = 9.0
+margin_bottom = -7.0
+[connection signal="timeout" from="Timer" to="fsm/pursue" method="_on_Timer_timeout"]
+[connection signal="timeout" from="fsm/idle/dir_change" to="fsm/idle" method="_on_dir_change_timeout"]
+[connection signal="body_entered" from="player_detect" to="fsm/idle" method="_on_player_detect_body_entered"]

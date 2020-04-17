@@ -3,6 +3,7 @@ extends Node
 export (int, 1, 20) var cost
 export(PackedScene) var bullet_scn
 
+export var base_damage : int
 export var scalings := {
 	"int" : 0,
 	"str" : 0,
@@ -12,13 +13,12 @@ export var scalings := {
 }
 onready var player = get_parent()
 
-export var damage : int
 export var speed : int
 
 var can_shoot := true
 
 func calculate_damage() -> int:
-	var d := 0
+	var d := base_damage
 	for s in scalings:
 		d += player.stats.get(s) * scalings[s]
 	return d

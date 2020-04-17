@@ -22,8 +22,15 @@ func _physics_process(_delta: float) -> void:
 	dir.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
 	
 	velocity = player.move_and_slide(_speed*dir.normalized())
+	update_agent()
 
 func _on_base_stat_changed(name:String, val:int) -> void:
 	if name == "spd":
 		_speed = base_speed + player.stats.get("spd") * _spd_multiplier
-	
+		player.agent.linear_speed_max = _speed
+
+func update_agent() -> void:
+	player.agent.position.x = player.global_position.x
+	player.agent.position.y = player.global_position.y
+	player.agent.linear_velocity.x = velocity.x
+	player.agent.linear_velocity.y = velocity.y

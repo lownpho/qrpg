@@ -3,11 +3,11 @@
 [ext_resource path="res://items/equip/spell/test_bullet_spell.gd" type="Script" id=1]
 [ext_resource path="res://items/equip/bullets/test_bullet.tscn" type="PackedScene" id=2]
 
-
 [node name="bullet_spell" type="Node"]
 script = ExtResource( 1 )
 cost = 3
 bullet_scn = ExtResource( 2 )
+base_damage = 10
 scalings = {
 "def": 0,
 "dex": 0,
@@ -15,7 +15,6 @@ scalings = {
 "spd": 0,
 "str": 0
 }
-damage = 5
 speed = 300
 
 [node name="cooldown" type="Timer" parent="."]

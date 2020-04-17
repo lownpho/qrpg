@@ -12,18 +12,14 @@ func _ready():
 #	_parent = get_parent() as State
 	pass
 
-
 #func unhandled_input(_event: InputEvent) -> void:
 	pass
-
 
 func physics_process(_delta: float) -> void:
 	pass
 
-
 func enter(_msg: Dictionary = {}) -> void:
 	pass
-
 
 func exit() -> void:
 	pass
